@@ -1,5 +1,6 @@
 import random
 import tkinter as tk
+import copy
 
 def trouver_gagnant(joueurs):
     max_score = max(joueurs.values(), key=lambda joueur: joueur['score'])['score']
@@ -14,62 +15,24 @@ def Verif_param_nombre(text):
         else:
             return False
 
-
-
-def feliciter_gagnant(nom_gagnant):
-    # Création de la fenêtre
-    root = tk.Tk()
-    root.title("Félicitations !")
-    root.geometry("500x300")
-    root.configure(bg="black")
-
-    # Création du label avec le nom du gagnant
-    label = tk.Label(root, text=f"Félicitations {nom_gagnant} ! 🎉", 
-                     font=("Arial", 24, "bold"), fg="white", bg="black")
-    label.pack(expand=True)
-
-    # Liste de couleurs pour l'animation
-    couleurs = ["red", "yellow", "green", "blue", "purple", "orange", "white"]
-
-    def changer_couleur():
-        """Change la couleur du texte aléatoirement."""
-        label.config(fg=random.choice(couleurs))
-        root.after(300, changer_couleur)  # Relancer après 300ms
-
-    # Lancer l'animation
-    changer_couleur()
-
-    # Afficher la fenêtre
-    root.mainloop()
-
-
-
-
-
-
 def recuperer_nombre(entry):
     if Verif_param_nombre(entry.get()) == True:
         nombre = entry.get()
         return int(nombre)
     return False
 
-
 def ajouter_nom_joueur_dans_liste(entry, liste):
     nom_du_joueur = entry.get()
     liste.append(nom_du_joueur)
 
 
-import copy
-
 def generer_la_combinaison_aleatoire(liste_des_joueurs):
     nouvelle_liste = copy.deepcopy(liste_des_joueurs)  # Copie profonde pour éviter toute modification
-    print("Avant shuffle :", nouvelle_liste)  # Debug
     
     if len(nouvelle_liste) % 2 != 0:
         nouvelle_liste.append("joueur_fictif")
     
     random.shuffle(nouvelle_liste)  # Mélange la copie, pas l'originale
-    print("Après shuffle :", nouvelle_liste)  # Debug
 
     return nouvelle_liste
 
