@@ -1,7 +1,7 @@
 from tkinter import *
 import random
 from tkinter import ttk
-from fonctions import *  
+from fonctions_v2 import *  
 from itertools import permutations
 import tkinter as tk
 import matplotlib.pyplot as plt
