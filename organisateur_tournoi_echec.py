@@ -116,7 +116,6 @@ def afficher_nouvelle_page():
 
 
 def fonction_bouton_valider_nom_joueur(entry_nom_joueur): 
-    print("baba", liste_des_joueurs_sans_le_joueur_fictif)
     if entry_nom_joueur.get() == "":
         return
     elif entry_nom_joueur.get() not in liste_des_joueurs_sans_le_joueur_fictif:
@@ -129,7 +128,6 @@ def fonction_bouton_valider_nom_joueur(entry_nom_joueur):
     global nombre_question_nom, dictionnaire_joueurs
     nombre_question_nom += 1
     if nombre_question_nom < nombre_de_joueurs_sans_le_joueur_fictif :
-        print("mumu", liste_des_joueurs_sans_le_joueur_fictif)
         afficher_nouvelle_page()
     else:
         dictionnaire_joueurs = (creer_le_dictionnaire_joueurs(liste_des_joueurs_sans_le_joueur_fictif))
@@ -142,9 +140,7 @@ def afficher_nouvelle_page_tableau(liste_des_joueurs_des_joueurs_sans_le_joueur_
     for widget in window.winfo_children():
         widget.destroy()
     if round_effectue == 0:
-        print("huhu", liste_des_joueurs_sans_le_joueur_fictif)
         liste_des_joueurs = generer_la_combinaison_aleatoire(liste_des_joueurs_sans_le_joueur_fictif)
-        print("huho", liste_des_joueurs_sans_le_joueur_fictif)
     else:
         liste_des_joueurs = generate_match_list(liste_des_joueurs)
 
@@ -191,7 +187,6 @@ def generate_match_list(liste_des_joueurs):
             note_max = note
             liste_des_joueurs_bien = copie_liste_joueurs
 
-    print("La note max est", note_max)
     return liste_des_joueurs_bien
 
 def noter_la_liste(liste_des_joueurs):
@@ -210,7 +205,7 @@ def noter_la_liste(liste_des_joueurs):
             if str(liste_des_joueurs[i - 1]) != "joueur_fictif":
                 if str(liste_des_joueurs[i]) not in dictionnaire_joueurs[liste_des_joueurs[i - 1]]['joueurs_affrontés']:
                     note += 1
-    impact_sur_note_du_score = score_ecart_total / 10
+    impact_sur_note_du_score = score_ecart_total / 20
     note -= impact_sur_note_du_score
 
     return note
@@ -238,7 +233,6 @@ def aucun_des_joueurs_n_a_deja_joue_ensemble(liste_des_joueurs):
 
 
 def ajouter_les_informations_des_joueurs_sauf_score_dans_le_dico(liste_des_joueurs, dictionnaire_joueurs):
-    print("Liste des joueurs :", liste_des_joueurs)
 
     i = 0
     while i < len(liste_des_joueurs) - 1:
@@ -269,7 +263,7 @@ def ajouter_les_informations_des_joueurs_sauf_score_dans_le_dico(liste_des_joueu
 
         i += 2  # On passe au prochain duo
 
-    print("Dictionnaire après mise à jour :", dictionnaire_joueurs)
+
 
 
 
@@ -325,7 +319,6 @@ def creer_un_complexe_question_reponse_fin_round(frame_fin_round, liste_des_joue
 
         frame_bloc_fin_match.pack()
         question_widget[question_id] = frame_bloc_fin_match
-        print(liste_gagnants)
     button_valider_tous_scores = Button(
     window,font=("Arial", 20),text="valider tout",
     command=fonction_bouton_valider_tout, bg="green", fg="white")
@@ -348,7 +341,6 @@ def fonction_bouton_valider_fin_match(frame_bloc_fin_match, combobox):
             joueurs = [nom.strip() for nom in noms_joueurs.split(",")]  # Séparer et nettoyer les noms
             
             liste_joueurs_ayant_fait_match_nul.extend(joueurs)  # Ajouter à la liste des matchs nuls
-            print("Joueurs ayant fait match nul :", joueurs)
         
         except ValueError:
             print("Erreur de format dans la chaîne du match nul :", resultat)
@@ -369,8 +361,6 @@ def fonction_bouton_valider_tout():
             dictionnaire_joueurs[liste_joueurs_ayant_fait_match_nul[i]]["score"] += 0.5
         liste_gagnants.clear()  # Au lieu de recréer la liste, on la vide
         liste_joueurs_ayant_fait_match_nul.clear()
-        print("le nombre de round est", nombre_de_round)
-        print("le nombre de round_effectue est", round_effectue)
         if round_effectue < nombre_de_round:
             afficher_graphique()
             # afficher_nouvelle_page_tableau(liste_des_joueurs, nombre_de_joueurs)
@@ -402,15 +392,12 @@ def ajouter_question(frame_fin_round):
 
 def afficher_graphique():
     global liste_des_joueurs_sans_le_joueur_fictif, nombre_de_joueurs
-    print("on affiche le graphique")
     """ Affiche un graphique des scores des joueurs """
     global canvas, fig, ax
     for widget in window.winfo_children():
         widget.destroy()
     # Récupérer les noms et scores
     noms = liste_des_joueurs_sans_le_joueur_fictif
-    print("haha",liste_des_joueurs_sans_le_joueur_fictif)
-    print(noms)
     scores = [dictionnaire_joueurs[nom]["score"] for nom in noms]
 
     # Création de la figure
@@ -450,15 +437,12 @@ def afficher_graphique():
 
 def afficher_graphique_fin():
     global liste_des_joueurs_sans_le_joueur_fictif, nombre_de_joueurs
-    print("on affiche le graphique")
     """ Affiche un graphique des scores des joueurs """
     global canvas, fig, ax
     for widget in window.winfo_children():
         widget.destroy()
     # Récupérer les noms et scores
     noms = liste_des_joueurs_sans_le_joueur_fictif
-    print("haha",liste_des_joueurs_sans_le_joueur_fictif)
-    print(noms)
     scores = [dictionnaire_joueurs[nom]["score"] for nom in noms]
 
     # Création de la figure
