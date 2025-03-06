@@ -2,8 +2,6 @@ from tkinter import *
 import random
 from tkinter import ttk
 from fonctions_v2 import *  
-from itertools import permutations
-import tkinter as tk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
@@ -37,9 +35,6 @@ entry_nombre_de_round.pack(pady=20)
 
 button = Button(window, text="valider", font=("Arial", 20), command=lambda: fonction_bouton_valider_nombre_joueur_et_round(entry_nombre_joueurs, entry_nombre_de_round))
 button.pack(pady=20)
-
-# Déclaration globale du label d'erreur
-label_erreur = None  
 
 # Déclaration globale du label d'erreur
 label_erreur = None  
@@ -380,16 +375,6 @@ def fonction_bouton_valider_tout():
             afficher_graphique()
             # afficher_nouvelle_page_tableau(liste_des_joueurs, nombre_de_joueurs)
         else:
-            print("le tournoi est fini")
-            for widget in window.winfo_children():
-                widget.destroy()
-            print(dictionnaire_joueurs)
-            gagnant = trouver_gagnant(dictionnaire_joueurs)
-            if len(gagnant) > 1:
-                label_fin = ttk.Label(window, text=f"Les gagnants sont: {gagnant}", font=("Arial", 20))
-            else:
-                label_fin = ttk.Label(window, text=f"Le gagnant est: {gagnant}", font=("Arial", 20))
-            label_fin.pack()
             afficher_graphique_fin()
     else:
         return
@@ -507,6 +492,17 @@ def afficher_graphique_fin():
     canvas = FigureCanvasTkAgg(fig, master=window)
     canvas.draw()
     canvas.get_tk_widget().pack(expand=True, fill="both")
+    gagnant = trouver_gagnant(dictionnaire_joueurs)
+# Affichage du label indiquant les gagnants sans crochets
+    if len(gagnant) > 1:
+    # Utilise join() pour joindre les noms des gagnants avec une virgule et un espace
+        gagnants_str = ', '.join(gagnant)  # Crée une chaîne de texte sans crochets
+        label_fin = ttk.Label(window, text=f"Les gagnants sont: {gagnants_str}", font=("Arial", 20))
+    else:
+        label_fin = ttk.Label(window, text=f"Le gagnant est le joueur {gagnant[0]}", font=("Arial", 20))
+
+    # Ajouter le label à la fenêtre
+    label_fin.pack()
 
 
 window.mainloop()
