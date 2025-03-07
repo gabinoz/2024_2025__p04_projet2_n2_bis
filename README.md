@@ -15,6 +15,7 @@ Si matplotlib n'est pas installé, vous pouvez l'installer avec la commande suiv
 bash
 Copier
 pip install matplotlib
+
 Fonctionnalités
 Entrée du nombre de joueurs et de rounds : L'utilisateur entre le nombre de joueurs et le nombre de rounds dans le tournoi.
 Validation des joueurs : Après avoir validé le nombre de joueurs et de rounds, un formulaire est généré pour permettre à l'utilisateur d'entrer les noms des joueurs.
@@ -23,6 +24,7 @@ Saisie des résultats : Après chaque round, l'utilisateur peut entrer les résu
 Mise à jour des scores : Les scores sont mis à jour après chaque round en fonction des résultats.
 Affichage graphique des scores : Après chaque round, un graphique des scores est généré avec matplotlib, montrant l'évolution des scores des joueurs.
 Affichage du gagnant : Une fois tous les rounds terminés, un graphique final est affiché pour montrer les scores des joueurs, ainsi qu'un message indiquant le gagnant du tournoi.
+
 Fonctionnement
 Étapes de l'application
 Page d'accueil :
@@ -49,9 +51,12 @@ Fenêtre principale (Tkinter)
 La fenêtre principale de l'application est gérée par Tkinter avec un design simple comprenant des labels, des champs de saisie (Entry), des boutons (Button), et des tableaux (Treeview) pour afficher les matchs.
 
 Validation des Entrées
+
 Le nombre de joueurs et de rounds est validé pour s'assurer qu'il respecte les règles du tournoi.
 Des messages d'erreur sont affichés en cas de saisie invalide.
+
 Gestion des Matchs
+
 Les matchs sont générés aléatoirement en fonction des joueurs enregistrés, en respectant les règles du tournoi.
 Les résultats sont saisis via des menus déroulants (Combobox), où l'utilisateur choisit le gagnant ou un match nul.
 Les scores sont mis à jour après chaque match.
