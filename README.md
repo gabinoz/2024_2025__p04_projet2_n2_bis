@@ -60,18 +60,29 @@ Gestion des Matchs
 Les matchs sont générés aléatoirement en fonction des joueurs enregistrés, en respectant les règles du tournoi.
 Les résultats sont saisis via des menus déroulants (Combobox), où l'utilisateur choisit le gagnant ou un match nul.
 Les scores sont mis à jour après chaque match.
+
 Affichage des Graphiques
+
 Les scores sont affichés sous forme de graphiques en barres à l'aide de la bibliothèque matplotlib. Ces graphiques permettent de visualiser les performances des joueurs tout au long du tournoi.
+
 Gestion des Rounds
+
 Les rounds sont gérés automatiquement en fonction des résultats saisis. À la fin de chaque round, les scores sont mis à jour et un graphique est généré.
+
 Gestion des Résultats Finaux
+
 À la fin du tournoi, le ou les gagnants sont affichés sur l'interface avec un graphique final des scores.
+
 Exemple d'Exécution
+
 Lors du lancement de l'application, la fenêtre principale s'ouvrira avec une interface pour entrer le nombre de joueurs et de rounds. Après la validation, l'utilisateur pourra entrer les noms des joueurs, générer les paires de matchs, entrer les résultats, et afficher les scores sous forme de graphiques.
 
 Améliorations futures
+
 Ajouter la possibilité de choisir les couleurs du graphique et du tableau des matchs.
 Permettre l'exportation des résultats sous forme de fichier (CSV, Excel, etc.).
 Ajouter un mode "Spectateur" où les utilisateurs peuvent simplement voir les résultats sans interagir.
+
 Conclusion
+
 Ce gestionnaire de tournoi d'échecs est un outil simple et interactif pour gérer un tournoi en direct, suivre les scores des joueurs et visualiser les résultats via des graphiques. Grâce à Tkinter et matplotlib, il offre une interface graphique conviviale et des visualisations efficaces.
